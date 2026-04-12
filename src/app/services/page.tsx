@@ -105,7 +105,7 @@ export default function ServicesPage() {
             <h2 className="ct">
               Let's <em>Work!</em>
             </h2>
-            <p className="cb">
+            <p className="contact-body">
               Whether you're an architecture software company looking to reach students and professionals, or a brand wanting authentic UGC — I'd love to hear from you. All pricing discussed on enquiry.
             </p>
             <div className="clinks">

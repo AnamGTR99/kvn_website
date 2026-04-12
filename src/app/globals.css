@@ -283,7 +283,7 @@ nav.s{background:rgba(10,11,13,.94);backdrop-filter:blur(20px);border-color:var(
 .cr{padding:52px}
 .ct{font-family:var(--serif);font-size:clamp(34px,4.2vw,58px);font-weight:200;line-height:.92;margin-bottom:22px}
 .ct em{font-style:italic;display:block}
-.cb{font-size:13px;line-height:1.75;color:var(--fd);margin-bottom:32px}
+.contact-body{font-size:13px;line-height:1.75;color:var(--fd);margin-bottom:32px}
 .clinks{display:flex;flex-direction:column;gap:12px}
 .clink{font-size:11px;letter-spacing:.09em;color:var(--fd);text-decoration:none;display:flex;align-items:center;gap:10px;transition:color .2s}
 .clink::before{content:'—';color:var(--ff)}
@@ -471,32 +471,6 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
 }
 
 
-
-/* === STYLES FROM OTHER PAGES === */
-/* ── CUBE GRID BACKGROUND ── */
-#cubes-bg{
-  position:absolute;inset:0;z-index:1;
-  /* perspective for 3D cubes */
-  perspective:600px;
-  overflow:hidden;
-}
-/* Each cell is a 3D cube */
-.cb{
-  position:relative;
-  transform-style:preserve-3d;
-  transform:rotateX(0deg) rotateY(0deg);
-  transition:transform .08s ease;
-  will-change:transform;
-}
-/* cube faces */
-.cb-face{
-  position:absolute;inset:0;
-  border:1.2px solid rgba(182,186,197,0.35);
-  background:var(--bg);
-  backface-visibility:hidden;
-}
-/* front face is the visible one; depth face adds the 3D illusion */
-.cb-face.front{transform:translateZ(0px)}
 /* ══════════════════════════════════════
    ANAM-STYLE ABOUT PAGE LAYOUT
 ══════════════════════════════════════ */
@@ -540,61 +514,21 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
 }
 @media(max-width:768px){
   .about-profile{flex-direction:column;gap:24px}
-.about-photo{width:100%;max-width:280px;aspect-ratio:1/1.2}
-.about-wid-grid{grid-template-columns:1fr}
-/* ── CUBE GRID BACKGROUND ── */
-#cubes-bg{
-  position:absolute;inset:0;z-index:1;
-  /* perspective for 3D cubes */
-  perspective:600px;
-  overflow:hidden;
+  .about-photo{width:100%;max-width:280px;aspect-ratio:1/1.2}
+  .about-wid-grid{grid-template-columns:1fr}
 }
-/* Each cell is a 3D cube */
-.cb{
-  position:relative;
-  transform-style:preserve-3d;
-  transform:rotateX(0deg) rotateY(0deg);
-  transition:transform .08s ease;
-  will-change:transform;
-}
-/* cube faces */
-.cb-face{
-  position:absolute;inset:0;
-  border:1.2px solid rgba(182,186,197,0.35);
-  background:var(--bg);
-  backface-visibility:hidden;
-}
-/* front face is the visible one; depth face adds the 3D illusion */
-.cb-face.front{transform:translateZ(0px)}
-/* ── CUBE GRID BACKGROUND ── */
-#cubes-bg{
-  position:absolute;inset:0;z-index:1;
-  /* perspective for 3D cubes */
-  perspective:600px;
-  overflow:hidden;
-}
-/* Each cell is a 3D cube */
-.cb{
-  position:relative;
-  transform-style:preserve-3d;
-  transform:rotateX(0deg) rotateY(0deg);
-  transition:transform .08s ease;
-  will-change:transform;
-}
-/* cube faces */
-.cb-face{
-  position:absolute;inset:0;
-  border:1.2px solid rgba(182,186,197,0.35);
-  background:var(--bg);
-  backface-visibility:hidden;
-}
-/* front face is the visible one; depth face adds the 3D illusion */
-.cb-face.front{transform:translateZ(0px)}
+
+/* ══════════════════════════════════════
+   PAGE HERO LAYOUT
+══════════════════════════════════════ */
 .page-hero-text{flex:1;min-width:0}
 .page-hero-image{flex:1;min-width:0;overflow:hidden}
 .page-hero-image img{width:100%;height:auto;display:block}
-@media(max-width:768px){.page-hero{flex-direction:column;gap:32px}
-.page-hero-image{width:100%}
+@media(max-width:768px){
+  .page-hero{flex-direction:column;gap:32px}
+  .page-hero-image{width:100%}
+}
+
 /* ══════════════════════════════════════
    CONTACT PAGE
 ══════════════════════════════════════ */
@@ -715,15 +649,10 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
   line-height:1.6;
 }
 .form-success.show{display:block}
-/* ── FOOTER ── */
-footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-content:space-between;align-items:center}
-/* ── SCROLL REVEAL ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}
-/* ── RESPONSIVE ── */
+/* ── CONTACT RESPONSIVE ── */
 @media(max-width:1024px){
   .contact-grid{grid-template-columns:1fr}
-.contact-left{border-right:none;border-bottom:0.5px solid var(--ln)}
-.contact-page{padding:120px 20px 60px}
-.contact-left,.contact-right{padding:36px 24px}
-
-}}}}
+  .contact-left{border-right:none;border-bottom:0.5px solid var(--ln)}
+  .contact-page{padding:120px 20px 60px}
+  .contact-left,.contact-right{padding:36px 24px}
+}
