@@ -203,6 +203,50 @@ export default function CubeGrid() {
         tiltAt(autoRow, autoCol);
       }
     }, 80);
+
+    // ── Tron sweep — moving light beam across cube edges ──
+    const SWEEP_DUR = 4;
+    const SWEEP_WIDTH = 2.5;
+
+    const colFaces: { [key: number]: HTMLElement[] } = {};
+    for (let c = 0; c < GRID; c++) colFaces[c] = [];
+    scene.querySelectorAll('.cb').forEach((cube: any) => {
+      const c = +cube.dataset.col;
+      cube.querySelectorAll('.cb-face').forEach((f: HTMLElement) => colFaces[c].push(f));
+    });
+
+    const sweepObj = { pos: -SWEEP_WIDTH };
+    gsap.to(sweepObj, {
+      pos: GRID + SWEEP_WIDTH,
+      duration: SWEEP_DUR,
+      ease: 'none',
+      repeat: -1,
+      onUpdate: function () {
+        const center = sweepObj.pos;
+        for (let c = 0; c < GRID; c++) {
+          const dist = Math.abs(c - center);
+          if (dist < SWEEP_WIDTH) {
+            const pct = 1 - dist / SWEEP_WIDTH;
+            const alpha = (0.32 + pct * 0.38).toFixed(2);
+            const glowAlpha = (0.22 + pct * 0.28).toFixed(2);
+            const bdr = 'rgba(200,220,255,' + alpha + ')';
+            const shd =
+              '0 0 ' + (5 + pct * 4) + 'px rgba(200,220,255,' + glowAlpha + '), 0 0 ' +
+              (12 + pct * 8) + 'px rgba(160,190,255,' + (0.10 + pct * 0.15).toFixed(2) +
+              '), inset 0 0 5px rgba(200,220,255,' + (0.06 + pct * 0.06).toFixed(2) + ')';
+            colFaces[c].forEach((f) => {
+              f.style.borderColor = bdr;
+              f.style.boxShadow = shd;
+            });
+          } else {
+            colFaces[c].forEach((f) => {
+              f.style.borderColor = '';
+              f.style.boxShadow = '';
+            });
+          }
+        }
+      },
+    });
   };
 
   return (

@@ -15,7 +15,8 @@ body{background:var(--bg);color:var(--fg);font-family:var(--mono);font-weight:30
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;transition:background .4s,border-color .4s;border-bottom:0.5px solid transparent}
 nav.s{background:rgba(10,11,13,.94);backdrop-filter:blur(20px);border-color:var(--ln)}
-.nav-logo{height:26px;opacity:.85}
+.nav-name{font-family:var(--serif);font-size:14px;font-weight:400;letter-spacing:.04em;color:var(--fg);text-decoration:none;opacity:.85;transition:opacity .2s}
+.nav-name:hover{opacity:1}
 .nav-links{display:flex;gap:28px}
 .nav-links a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fd);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--fg)}
@@ -502,11 +503,25 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
 .about-touch-links{display:flex;gap:20px;flex-wrap:wrap}
 .about-touch-links a{font-size:12px;letter-spacing:.06em;color:var(--fd);text-decoration:none;transition:color .2s}
 .about-touch-links a:hover{color:var(--fg)}
+/* ABOUT HERO (skyline + profile overlay) */
+.about-hero{
+  position:relative;
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.about-vignette{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%, rgba(10,11,13,0) 0%, rgba(10,11,13,0.45) 55%, rgba(10,11,13,0.9) 100%);
+}
+.about-hero .about-wrapper{position:relative;z-index:2;padding-top:140px;padding-bottom:80px}
 /* TAIWAN SKYLINE BACKGROUND */
 .tw-skyline-bg{
-  position:absolute;top:0;left:0;right:0;
-  width:110%;height:340px;margin-left:-5%;
-  z-index:0;opacity:0.18;
+  position:absolute;bottom:0;left:0;right:0;
+  width:110%;height:400px;margin-left:-5%;
+  z-index:0;opacity:0.35;
   pointer-events:none;overflow:hidden;
 }
 .tw-skyline-bg svg{

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -33,15 +32,8 @@ export default function Nav() {
 
   return (
     <nav className={scrolled ? "s" : ""}>
-      <Link href="/">
-        <Image
-          src="/images/logo.jpeg"
-          alt="Logo"
-          className="nav-logo"
-          height={26}
-          width={26}
-          style={{ opacity: 0.85 }}
-        />
+      <Link href="/" className="nav-name">
+        Kevin Chiang
       </Link>
 
       <div className="nav-links">

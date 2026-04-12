@@ -71,9 +71,21 @@ export default function ProjectPage() {
             residual urban space into a place of civic life.
             <br />
             <br />
-            Brick, concrete, and timber respond to the rawness of the
-            infrastructure above, while a central landscaped atrium draws natural
-            light deep into the plan.
+            The design responds to the rawness of existing elevated rail
+            infrastructure — brick, concrete, and timber ground the building in
+            its industrial surroundings while a central landscaped atrium draws
+            natural light deep into the plan, creating a sequence of interlocking
+            interior and exterior spaces. The station concourse, community hall,
+            and public garden are organised along a single circulation spine,
+            allowing commuters and residents to move through the project
+            without barriers.
+            <br />
+            <br />
+            Structurally, cross-laminated timber panels span between concrete
+            piers that carry the rail load above. The roof folds to create
+            clerestory windows on the north façade, flooding the waiting
+            platforms with diffused daylight and reducing reliance on artificial
+            lighting during operating hours.
           </p>
           <div>
             <div className="ptlbl">Deliverables</div>
@@ -98,7 +110,7 @@ export default function ProjectPage() {
           </div>
         </div>
 
-        {/* IMAGE GALLERY */}
+        {/* IMAGE GALLERY — curated selection */}
         <div className="pgal rv">
           {/* Full-width hero gallery image */}
           <div className="gh">
@@ -106,7 +118,7 @@ export default function ProjectPage() {
             <div className="glbl">Interior — Garden atrium &amp; courtyard</div>
           </div>
 
-          {/* 2-col row */}
+          {/* 2-col row — best renders */}
           <div className="g2">
             <div className="gi">
               <img src="/images/interior-dining.png" alt="Interior dining" />
@@ -118,7 +130,7 @@ export default function ProjectPage() {
             </div>
           </div>
 
-          {/* 2-col row */}
+          {/* 2-col row — drawings */}
           <div className="g2">
             <div className="gi">
               <img src="/images/axon.png" alt="Axonometric drawing" />
@@ -130,23 +142,7 @@ export default function ProjectPage() {
             </div>
           </div>
 
-          {/* 3-col row */}
-          <div className="g3">
-            <div className="gi">
-              <img src="/images/context-model.png" alt="Context model" />
-              <div className="gilbl">Context model</div>
-            </div>
-            <div className="gi">
-              <img src="/images/massing-model.png" alt="Massing model" />
-              <div className="gilbl">Massing model</div>
-            </div>
-            <div className="gi">
-              <img src="/images/model-detail.png" alt="Model detail" />
-              <div className="gilbl">Structural detail</div>
-            </div>
-          </div>
-
-          {/* Full-width closing image */}
+          {/* Full-width closing image — physical model */}
           <div className="gh">
             <img src="/images/model-elevation.png" alt="Model elevation" />
             <div className="glbl">Physical model — elevation</div>

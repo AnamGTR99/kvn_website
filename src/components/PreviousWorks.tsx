@@ -36,7 +36,7 @@ const BRANDS: { [key: string]: BrandData } = {
   suapp: {
     name: 'SUAPP.ai',
     logoClass: 'suapp',
-    logo: '/images/suapp.ai.jpeg',
+    logo: '/images/old-suapp-logo.png',
     stats: [
       { val: '125K', lbl: 'Avg. views' },
       { val: '7.3K', lbl: 'Avg. saves', hi: true },
@@ -88,7 +88,7 @@ const BRANDS: { [key: string]: BrandData } = {
   foyr: {
     name: 'Foyr Neo',
     logoClass: 'foyr',
-    logo: '/images/foyr-neo.png',
+    logo: '/images/old-foyr-logo.jpeg',
     stats: [
       { val: '142K', lbl: 'Avg. views' },
       { val: '8.1K', lbl: 'Avg. saves', hi: true },
@@ -171,7 +171,7 @@ export default function PreviousWorks() {
             role="AI Rendering & Modelling"
             name="SUAPP.ai"
             reels="3 sponsored reels"
-            logoSrc="/images/suapp.ai.jpeg"
+            logoSrc="/images/old-suapp-logo.png"
             logoClass="suapp"
             onOpenModal={handleOpenModal}
           />
@@ -180,7 +180,7 @@ export default function PreviousWorks() {
             role="3D Interior Design"
             name="Foyr Neo"
             reels="1 sponsored reel"
-            logoSrc="/images/foyr-neo.png"
+            logoSrc="/images/old-foyr-logo.jpeg"
             logoClass="foyr"
             onOpenModal={handleOpenModal}
           />
