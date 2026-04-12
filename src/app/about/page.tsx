@@ -178,67 +178,83 @@ export default function AboutPage() {
               <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0" dur="8s" repeatCount="indefinite" />
             </linearGradient>
           </defs>
-          {/* Base solid buildings */}
+          {/* Base solid buildings — taller, tighter, no 101 */}
           <g stroke="rgba(180,200,230,0.45)" strokeWidth="0.8" fill="none">
             <line x1="0" y1="310" x2="1200" y2="310" />
-            {/* Taipei 101 silhouette (center) */}
-            <rect x="575" y="58" width="30" height="252" />
-            <line x1="590" y1="58" x2="590" y2="22" />
-            <line x1="566" y1="100" x2="614" y2="100" />
-            <line x1="567" y1="130" x2="613" y2="130" />
-            <line x1="568" y1="160" x2="612" y2="160" />
-            <line x1="569" y1="188" x2="611" y2="188" />
-            <line x1="570" y1="214" x2="610" y2="214" />
-            <line x1="571" y1="238" x2="609" y2="238" />
-            <rect x="562" y="240" width="56" height="70" />
-            {/* Nan Shan Plaza */}
-            <rect x="490" y="155" width="28" height="155" />
-            <line x1="504" y1="155" x2="504" y2="310" />
-            {/* Shin Kong */}
-            <rect x="195" y="165" width="20" height="145" />
-            <line x1="205" y1="165" x2="205" y2="310" />
-            {/* Farglory */}
-            <rect x="240" y="195" width="30" height="115" />
-            {/* Mid-left */}
-            <rect x="290" y="220" width="24" height="90" />
-            <rect x="320" y="235" width="20" height="75" />
-            <rect x="360" y="210" width="26" height="100" />
-            <rect x="425" y="205" width="28" height="105" />
-            <rect x="458" y="230" width="20" height="80" />
-            {/* Right of 101 */}
-            <rect x="635" y="210" width="26" height="100" />
-            <rect x="670" y="230" width="22" height="80" />
-            <rect x="700" y="215" width="30" height="95" />
-            <rect x="745" y="240" width="35" height="70" />
-            {/* Far right */}
-            <rect x="810" y="235" width="22" height="75" />
-            <rect x="845" y="225" width="26" height="85" />
-            <rect x="920" y="250" width="24" height="60" />
-            {/* Far left */}
-            <rect x="60" y="240" width="22" height="70" />
-            <rect x="125" y="235" width="24" height="75" />
+            {/* Far left cluster */}
+            <rect x="30" y="180" width="22" height="130" />
+            <rect x="56" y="200" width="18" height="110" />
+            <rect x="78" y="170" width="24" height="140" />
+            <rect x="106" y="190" width="20" height="120" />
+            <rect x="130" y="160" width="22" height="150" />
+            <rect x="156" y="185" width="18" height="125" />
+            {/* Left-centre cluster */}
+            <rect x="190" y="120" width="22" height="190" />
+            <line x1="201" y1="120" x2="201" y2="310" />
+            <rect x="216" y="140" width="28" height="170" />
+            <rect x="248" y="160" width="22" height="150" />
+            <rect x="274" y="145" width="26" height="165" />
+            <rect x="304" y="170" width="20" height="140" />
+            <rect x="328" y="155" width="24" height="155" />
+            <rect x="356" y="175" width="20" height="135" />
+            <rect x="380" y="150" width="26" height="160" />
+            <rect x="410" y="165" width="22" height="145" />
+            <rect x="436" y="140" width="28" height="170" />
+            <rect x="468" y="160" width="20" height="150" />
+            <rect x="492" y="110" width="28" height="200" />
+            <line x1="506" y1="110" x2="506" y2="310" />
+            <rect x="524" y="150" width="22" height="160" />
+            {/* Centre gap (no 101 here) */}
+            <rect x="570" y="170" width="24" height="140" />
+            <rect x="598" y="155" width="20" height="155" />
+            <rect x="622" y="175" width="26" height="135" />
+            {/* Right-centre cluster */}
+            <rect x="652" y="145" width="24" height="165" />
+            <rect x="680" y="165" width="22" height="145" />
+            <rect x="706" y="135" width="28" height="175" />
+            <rect x="738" y="155" width="22" height="155" />
+            <rect x="764" y="170" width="26" height="140" />
+            <rect x="794" y="150" width="20" height="160" />
+            <rect x="818" y="140" width="24" height="170" />
+            <rect x="846" y="160" width="22" height="150" />
+            {/* Far right cluster */}
+            <rect x="880" y="175" width="26" height="135" />
+            <rect x="910" y="155" width="20" height="155" />
+            <rect x="934" y="170" width="24" height="140" />
+            <rect x="962" y="185" width="22" height="125" />
+            <rect x="988" y="165" width="26" height="145" />
+            <rect x="1018" y="180" width="20" height="130" />
+            <rect x="1042" y="195" width="24" height="115" />
+            <rect x="1070" y="175" width="22" height="135" />
+            <rect x="1096" y="190" width="26" height="120" />
+            <rect x="1126" y="200" width="22" height="110" />
+            <rect x="1152" y="185" width="24" height="125" />
             {/* River */}
             <path d="M0 315 Q150 318 300 316 Q450 319 600 317 Q750 320 900 316 Q1050 319 1200 317" strokeDasharray="4 8" />
           </g>
           {/* Tron sweep */}
           <g stroke="url(#tron-sweep-bg)" strokeWidth="0.7" fill="none">
             <line x1="0" y1="310" x2="1200" y2="310" />
-            <rect x="575" y="58" width="30" height="252" />
-            <rect x="562" y="240" width="56" height="70" />
-            <rect x="490" y="155" width="28" height="155" />
-            <rect x="195" y="165" width="20" height="145" />
-            <rect x="240" y="195" width="30" height="115" />
-            <rect x="290" y="220" width="24" height="90" />
-            <rect x="320" y="235" width="20" height="75" />
-            <rect x="360" y="210" width="26" height="100" />
-            <rect x="425" y="205" width="28" height="105" />
-            <rect x="635" y="210" width="26" height="100" />
-            <rect x="700" y="215" width="30" height="95" />
-            <rect x="745" y="240" width="35" height="70" />
-            <rect x="845" y="225" width="26" height="85" />
-            <rect x="920" y="250" width="24" height="60" />
-            <rect x="60" y="240" width="22" height="70" />
-            <rect x="125" y="235" width="24" height="75" />
+            <rect x="30" y="180" width="22" height="130" />
+            <rect x="78" y="170" width="24" height="140" />
+            <rect x="130" y="160" width="22" height="150" />
+            <rect x="190" y="120" width="22" height="190" />
+            <rect x="216" y="140" width="28" height="170" />
+            <rect x="274" y="145" width="26" height="165" />
+            <rect x="328" y="155" width="24" height="155" />
+            <rect x="380" y="150" width="26" height="160" />
+            <rect x="436" y="140" width="28" height="170" />
+            <rect x="492" y="110" width="28" height="200" />
+            <rect x="570" y="170" width="24" height="140" />
+            <rect x="652" y="145" width="24" height="165" />
+            <rect x="706" y="135" width="28" height="175" />
+            <rect x="764" y="170" width="26" height="140" />
+            <rect x="818" y="140" width="24" height="170" />
+            <rect x="880" y="175" width="26" height="135" />
+            <rect x="934" y="170" width="24" height="140" />
+            <rect x="988" y="165" width="26" height="145" />
+            <rect x="1070" y="175" width="22" height="135" />
+            <rect x="1152" y="185" width="24" height="125" />
           </g>
         </svg>
       </div>
