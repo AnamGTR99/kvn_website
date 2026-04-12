@@ -82,28 +82,28 @@ export default function VentureModal({ isOpen, brand, onClose }: VentureModalPro
           <div className="mvids">
             {brand.videos.map((video, idx) => (
               <div key={idx} className="mvc">
-                <div className="mvth">
-                  <iframe
-                    src={video.embed}
-                    allowFullScreen
-                    style={{ width: '100%', height: '100%', border: 'none' }}
-                  ></iframe>
-                  <div
-                    className="mvo"
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => window.open(video.url, '_blank')}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        window.open(video.url, '_blank');
-                      }
+                <a
+                  className="mvth mvth-link"
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={video.embed.replace('/embed', '/media/?size=l').replace('reel/', 'p/')}
+                    alt={video.title}
+                    className="mvth-img"
+                    onError={(e) => {
+                      const el = e.target as HTMLImageElement;
+                      el.style.display = 'none';
                     }}
-                  >
-                    <div className="mvp">
-                      <div className="mva"></div>
-                    </div>
+                  />
+                  <div className="mvth-play">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="white">
+                      <polygon points="6,3 20,12 6,21" />
+                    </svg>
                   </div>
-                </div>
+                  <div className="mvth-label">View on Instagram</div>
+                </a>
 
                 <div className="mvi">
                   <div className="mvtype">{video.type}</div>

@@ -34,7 +34,6 @@ export default function ContactPage() {
         setEmail('');
         setSubject('');
         setMessage('');
-        setTimeout(() => setShowSuccess(false), 5000);
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -42,6 +41,23 @@ export default function ContactPage() {
       setIsSubmitting(false);
     }
   };
+
+  if (showSuccess) {
+    return (
+      <main>
+        <div className="contact-page">
+          <div className="thankyou-card">
+            <h1 className="thankyou-heading">Thank you.</h1>
+            <p className="thankyou-sub">Your message has been sent successfully.<br />I&apos;ll get back to you as soon as possible.</p>
+            <div className="thankyou-links">
+              <a href="/" className="thankyou-btn">Back to home</a>
+              <a href="/contact" className="thankyou-btn secondary" onClick={(e) => { e.preventDefault(); setShowSuccess(false); }}>Send another</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main>
@@ -109,12 +125,6 @@ export default function ContactPage() {
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
-
-              {showSuccess && (
-                <div className="form-success show">
-                  <p>Thank you for reaching out. I&apos;ll get back to you soon.</p>
-                </div>
-              )}
             </div>
           </div>
         </div>
