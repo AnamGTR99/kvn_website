@@ -513,19 +513,17 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
   justify-content:center;
   overflow:hidden;
 }
-.about-vignette{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 90% 90% at 50% 50%, rgba(10,11,13,0) 0%, rgba(10,11,13,0.5) 55%, rgba(10,11,13,0.95) 100%);
-}
 .about-hero .about-wrapper{position:relative;z-index:2;padding-top:140px;padding-bottom:0;width:100%}
-/* TAIWAN SKYLINE BACKGROUND */
-.tw-skyline-bg{
-  position:absolute;bottom:0;left:0;right:0;
-  width:110%;height:340px;margin-left:-5%;
-  z-index:0;opacity:0.6;
-  pointer-events:none;overflow:hidden;
+/* SKYLINE STRIP — full-width between hero and story */
+.skyline-strip{
+  width:100%;
+  height:200px;
+  margin:-40px 0 0;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0.7;
 }
-.tw-skyline-bg svg{
+.skyline-strip svg{
   width:100%;height:100%;
 }
 /* ── 3-COLUMN TRIO: photo | taipei 101 | text ── */

@@ -3,63 +3,6 @@ export default function AboutPage() {
     <main>
       {/* HERO — 3 columns: photo | taipei 101 | text */}
       <section className="about-hero">
-        {/* Faint skyline behind everything */}
-        <div className="tw-skyline-bg">
-          <svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="tron-sweep-bg" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="white" stopOpacity="0" />
-                <stop offset="35%" stopColor="white" stopOpacity="0" />
-                <stop offset="45%" stopColor="white" stopOpacity="0.5" />
-                <stop offset="50%" stopColor="white" stopOpacity="0.8" />
-                <stop offset="55%" stopColor="white" stopOpacity="0.5" />
-                <stop offset="65%" stopColor="white" stopOpacity="0" />
-                <stop offset="100%" stopColor="white" stopOpacity="0" />
-                <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0" dur="8s" repeatCount="indefinite" />
-              </linearGradient>
-            </defs>
-            <g stroke="rgba(180,200,230,0.45)" strokeWidth="0.8" fill="none">
-              <line x1="0" y1="310" x2="1200" y2="310" />
-              <rect x="490" y="155" width="28" height="155" />
-              <line x1="504" y1="155" x2="504" y2="310" />
-              <rect x="195" y="165" width="20" height="145" />
-              <line x1="205" y1="165" x2="205" y2="310" />
-              <rect x="240" y="195" width="30" height="115" />
-              <rect x="290" y="220" width="24" height="90" />
-              <rect x="320" y="235" width="20" height="75" />
-              <rect x="360" y="210" width="26" height="100" />
-              <rect x="425" y="205" width="28" height="105" />
-              <rect x="635" y="210" width="26" height="100" />
-              <rect x="700" y="215" width="30" height="95" />
-              <rect x="745" y="240" width="35" height="70" />
-              <rect x="845" y="225" width="26" height="85" />
-              <rect x="920" y="250" width="24" height="60" />
-              <rect x="60" y="240" width="22" height="70" />
-              <rect x="125" y="235" width="24" height="75" />
-              <path d="M0 315 Q150 318 300 316 Q450 319 600 317 Q750 320 900 316 Q1050 319 1200 317" strokeDasharray="4 8" />
-            </g>
-            <g stroke="url(#tron-sweep-bg)" strokeWidth="0.7" fill="none">
-              <line x1="0" y1="310" x2="1200" y2="310" />
-              <rect x="490" y="155" width="28" height="155" />
-              <rect x="195" y="165" width="20" height="145" />
-              <rect x="240" y="195" width="30" height="115" />
-              <rect x="290" y="220" width="24" height="90" />
-              <rect x="320" y="235" width="20" height="75" />
-              <rect x="360" y="210" width="26" height="100" />
-              <rect x="425" y="205" width="28" height="105" />
-              <rect x="635" y="210" width="26" height="100" />
-              <rect x="700" y="215" width="30" height="95" />
-              <rect x="745" y="240" width="35" height="70" />
-              <rect x="845" y="225" width="26" height="85" />
-              <rect x="920" y="250" width="24" height="60" />
-              <rect x="60" y="240" width="22" height="70" />
-              <rect x="125" y="235" width="24" height="75" />
-            </g>
-          </svg>
-        </div>
-
-        <div className="about-vignette"></div>
-
         {/* "About" heading top-left */}
         <div className="about-wrapper" style={{ paddingBottom: 0 }}>
           <div className="about-header rv">
@@ -219,6 +162,86 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* SKYLINE STRIP — sits between hero and story */}
+      <div className="skyline-strip">
+        <svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="tron-sweep-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="35%" stopColor="white" stopOpacity="0" />
+              <stop offset="45%" stopColor="white" stopOpacity="0.5" />
+              <stop offset="50%" stopColor="white" stopOpacity="0.8" />
+              <stop offset="55%" stopColor="white" stopOpacity="0.5" />
+              <stop offset="65%" stopColor="white" stopOpacity="0" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+              <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0" dur="8s" repeatCount="indefinite" />
+            </linearGradient>
+          </defs>
+          {/* Base solid buildings */}
+          <g stroke="rgba(180,200,230,0.45)" strokeWidth="0.8" fill="none">
+            <line x1="0" y1="310" x2="1200" y2="310" />
+            {/* Taipei 101 silhouette (center) */}
+            <rect x="575" y="58" width="30" height="252" />
+            <line x1="590" y1="58" x2="590" y2="22" />
+            <line x1="566" y1="100" x2="614" y2="100" />
+            <line x1="567" y1="130" x2="613" y2="130" />
+            <line x1="568" y1="160" x2="612" y2="160" />
+            <line x1="569" y1="188" x2="611" y2="188" />
+            <line x1="570" y1="214" x2="610" y2="214" />
+            <line x1="571" y1="238" x2="609" y2="238" />
+            <rect x="562" y="240" width="56" height="70" />
+            {/* Nan Shan Plaza */}
+            <rect x="490" y="155" width="28" height="155" />
+            <line x1="504" y1="155" x2="504" y2="310" />
+            {/* Shin Kong */}
+            <rect x="195" y="165" width="20" height="145" />
+            <line x1="205" y1="165" x2="205" y2="310" />
+            {/* Farglory */}
+            <rect x="240" y="195" width="30" height="115" />
+            {/* Mid-left */}
+            <rect x="290" y="220" width="24" height="90" />
+            <rect x="320" y="235" width="20" height="75" />
+            <rect x="360" y="210" width="26" height="100" />
+            <rect x="425" y="205" width="28" height="105" />
+            <rect x="458" y="230" width="20" height="80" />
+            {/* Right of 101 */}
+            <rect x="635" y="210" width="26" height="100" />
+            <rect x="670" y="230" width="22" height="80" />
+            <rect x="700" y="215" width="30" height="95" />
+            <rect x="745" y="240" width="35" height="70" />
+            {/* Far right */}
+            <rect x="810" y="235" width="22" height="75" />
+            <rect x="845" y="225" width="26" height="85" />
+            <rect x="920" y="250" width="24" height="60" />
+            {/* Far left */}
+            <rect x="60" y="240" width="22" height="70" />
+            <rect x="125" y="235" width="24" height="75" />
+            {/* River */}
+            <path d="M0 315 Q150 318 300 316 Q450 319 600 317 Q750 320 900 316 Q1050 319 1200 317" strokeDasharray="4 8" />
+          </g>
+          {/* Tron sweep */}
+          <g stroke="url(#tron-sweep-bg)" strokeWidth="0.7" fill="none">
+            <line x1="0" y1="310" x2="1200" y2="310" />
+            <rect x="575" y="58" width="30" height="252" />
+            <rect x="562" y="240" width="56" height="70" />
+            <rect x="490" y="155" width="28" height="155" />
+            <rect x="195" y="165" width="20" height="145" />
+            <rect x="240" y="195" width="30" height="115" />
+            <rect x="290" y="220" width="24" height="90" />
+            <rect x="320" y="235" width="20" height="75" />
+            <rect x="360" y="210" width="26" height="100" />
+            <rect x="425" y="205" width="28" height="105" />
+            <rect x="635" y="210" width="26" height="100" />
+            <rect x="700" y="215" width="30" height="95" />
+            <rect x="745" y="240" width="35" height="70" />
+            <rect x="845" y="225" width="26" height="85" />
+            <rect x="920" y="250" width="24" height="60" />
+            <rect x="60" y="240" width="22" height="70" />
+            <rect x="125" y="235" width="24" height="75" />
+          </g>
+        </svg>
+      </div>
 
       {/* THE STORY SECTION */}
       <section className="about-wrapper">
