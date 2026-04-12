@@ -81,7 +81,7 @@ export default function AboutPage() {
 
           {/* CENTER — Taipei 101 centerpiece */}
           <div className="about-trio-tower rv">
-            <svg viewBox="0 0 120 520" xmlns="http://www.w3.org/2000/svg" className="taipei101-svg">
+            <svg viewBox="0 0 120 600" xmlns="http://www.w3.org/2000/svg" className="taipei101-svg">
               <defs>
                 <linearGradient id="tron-sweep-101" x1="0%" y1="100%" x2="0%" y2="0%">
                   <stop offset="0%" stopColor="rgba(200,220,255,0.3)" stopOpacity="1" />
@@ -135,6 +135,25 @@ export default function AboutPage() {
                 <line x1="78" y1="395" x2="78" y2="495" />
                 {/* Ground */}
                 <line x1="10" y1="495" x2="110" y2="495" />
+                {/* ── Mei Hua (梅花) — 5 petals ── */}
+                {/* Top petal */}
+                <ellipse cx="60" cy="524" rx="10" ry="14" />
+                {/* Top-right petal */}
+                <ellipse cx="73" cy="533" rx="10" ry="14" transform="rotate(72 73 533)" />
+                {/* Bottom-right petal */}
+                <ellipse cx="68" cy="549" rx="10" ry="14" transform="rotate(144 68 549)" />
+                {/* Bottom-left petal */}
+                <ellipse cx="52" cy="549" rx="10" ry="14" transform="rotate(-144 52 549)" />
+                {/* Top-left petal */}
+                <ellipse cx="47" cy="533" rx="10" ry="14" transform="rotate(-72 47 533)" />
+                {/* Center circle (pistil) */}
+                <circle cx="60" cy="540" r="5" />
+                {/* Stamen dots */}
+                <circle cx="60" cy="526" r="1.5" />
+                <circle cx="72" cy="533" r="1.5" />
+                <circle cx="68" cy="548" r="1.5" />
+                <circle cx="52" cy="548" r="1.5" />
+                <circle cx="48" cy="533" r="1.5" />
               </g>
 
               {/* Tron sweep layer — vertical sweep up the tower */}
@@ -170,6 +189,18 @@ export default function AboutPage() {
                 <line x1="65" y1="395" x2="65" y2="495" />
                 <line x1="78" y1="395" x2="78" y2="495" />
                 <line x1="10" y1="495" x2="110" y2="495" />
+                {/* Mei Hua sweep */}
+                <ellipse cx="60" cy="524" rx="10" ry="14" />
+                <ellipse cx="73" cy="533" rx="10" ry="14" transform="rotate(72 73 533)" />
+                <ellipse cx="68" cy="549" rx="10" ry="14" transform="rotate(144 68 549)" />
+                <ellipse cx="52" cy="549" rx="10" ry="14" transform="rotate(-144 52 549)" />
+                <ellipse cx="47" cy="533" rx="10" ry="14" transform="rotate(-72 47 533)" />
+                <circle cx="60" cy="540" r="5" />
+                <circle cx="60" cy="526" r="1.5" />
+                <circle cx="72" cy="533" r="1.5" />
+                <circle cx="68" cy="548" r="1.5" />
+                <circle cx="52" cy="548" r="1.5" />
+                <circle cx="48" cy="533" r="1.5" />
               </g>
             </svg>
           </div>
