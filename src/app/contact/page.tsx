@@ -50,14 +50,17 @@ export default function ContactPage() {
           <div className="contact-grid">
             {/* LEFT COLUMN */}
             <div className="contact-left">
-              <h2 className="contact-heading">
-                Let's
-                <em> Work!</em>
-              </h2>
+              <h1 className="contact-heading">
+                Let&apos;s
+                <em> Work.</em>
+              </h1>
               <p className="contact-sub">
-                Whether you're an architecture software company looking to reach students and professionals, or a brand wanting authentic UGC — I'd love to hear from you. All pricing discussed on enquiry.
+                Have a project in mind, or just want to say hello? Fill out the form and I&apos;ll get back to you as soon as possible.
               </p>
               <div className="contact-links">
+                <a href="mailto:contact@bykevinchiang.com" className="contact-link">
+                  contact@bykevinchiang.com
+                </a>
                 <a
                   href="https://www.instagram.com/bykevinchiang/"
                   target="_blank"
@@ -66,12 +69,9 @@ export default function ContactPage() {
                 >
                   @bykevinchiang
                 </a>
-                <a href="mailto:contact@bykevinchiang.com" className="contact-link">
-                  contact@bykevinchiang.com
-                </a>
-                <a href="https://bykevinchiang.com" target="_blank" rel="noopener noreferrer" className="contact-link">
-                  bykevinchiang.com
-                </a>
+                <span className="contact-link">
+                  Melbourne, Australia
+                </span>
               </div>
             </div>
 
@@ -106,13 +106,13 @@ export default function ContactPage() {
                   required
                 ></textarea>
                 <button type="submit" className="contact-btn" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Send message'}
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
 
               {showSuccess && (
                 <div className="form-success show">
-                  <p>Thank you! I've received your message and will get back to you soon.</p>
+                  <p>Thank you for reaching out. I&apos;ll get back to you soon.</p>
                 </div>
               )}
             </div>
