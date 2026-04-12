@@ -1,7 +1,7 @@
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0b0d;--bg2:#0f1014;--fg:#c4c8d4;--fd:#52586a;--ff:#1e2128;
+  --bg:#0a0b0d;--bg2:#0f1014;--fg:#c4c8d4;--fd:#52586a;--ff:#5a6070;
   --acc:#b6bac5;--ln:rgba(182,186,197,0.09);
   --serif:'Cormorant Garamond',serif;--mono:'DM Mono',monospace;
 }
@@ -295,10 +295,13 @@ nav.s{background:rgba(10,11,13,.94);backdrop-filter:blur(20px);border-color:var(
 .clink::before{content:'—';color:var(--ff)}
 .clink:hover{color:var(--fg)}
 .cform{display:flex;flex-direction:column;gap:12px}
-.cform input,.cform textarea{background:var(--bg);border:0.5px solid var(--ln);color:var(--fg);font-family:var(--mono);font-size:12px;font-weight:300;padding:13px 15px;border-radius:1px;resize:none;transition:border-color .2s}
+.cform input,.cform textarea{background:var(--bg);border:1px solid rgba(182,186,197,0.18);color:var(--fg);font-family:var(--mono);font-size:12px;font-weight:300;padding:13px 15px;border-radius:1px;resize:none;transition:border-color .2s}
 .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--fd)}
 .cform input::placeholder,.cform textarea::placeholder{color:var(--ff)}
 .cform textarea{min-height:90px}
+.cform-thankyou{text-align:center;padding:60px 20px}
+.cform-thankyou-heading{font-family:var(--head);font-size:28px;font-weight:300;color:var(--fg);margin-bottom:12px}
+.cform-thankyou-sub{font-family:var(--mono);font-size:12px;color:var(--fd);letter-spacing:.06em;line-height:1.7;margin-bottom:24px}
 .cbtn{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;background:var(--acc);color:var(--bg);border:none;padding:13px 26px;cursor:none;border-radius:1px;align-self:flex-start}
 footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-content:space-between;align-items:center}
 .fc{font-size:9px;letter-spacing:.09em;color:var(--fd)}
@@ -369,7 +372,7 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
   nav{padding:14px 20px}
   .nav-links{gap:14px}
   .nav-links a{font-size:8px;letter-spacing:.12em}
-  .nav-cta{font-size:8px;padding:6px 12px}
+  .nav-cta{display:none}
   .hero-name{font-size:clamp(48px,14vw,80px)}
   .hero-tagline{font-size:9px;letter-spacing:.2em}
   .brand-grid{grid-template-columns:1fr}
@@ -697,7 +700,7 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
 .contact-form input,
 .contact-form textarea{
   background:var(--bg);
-  border:0.5px solid var(--ln);
+  border:1px solid rgba(182,186,197,0.18);
   color:var(--fg);
   font-family:var(--mono);
   font-size:12px;

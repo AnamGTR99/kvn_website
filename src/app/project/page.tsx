@@ -1,3 +1,5 @@
+import EnquiryForm from '@/components/EnquiryForm';
+
 export const metadata = {
   title: 'Urban Station & Community Hub — Kevin Chiang',
   description: 'Final Year Design Studio project at the University of Melbourne',
@@ -180,13 +182,7 @@ export default function ProjectPage() {
             </div>
           </div>
           <div className="cr">
-            <div className="cform">
-              <input type="text" placeholder="Your name" />
-              <input type="text" placeholder="Company / brand" />
-              <input type="email" placeholder="Email address" />
-              <textarea placeholder="Tell me about your project..."></textarea>
-              <button className="cbtn">Send enquiry</button>
-            </div>
+            <EnquiryForm />
           </div>
         </div>
       </section>
