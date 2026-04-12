@@ -130,16 +130,10 @@ export default function ProjectPage() {
             </div>
           </div>
 
-          {/* 2-col row — drawings */}
-          <div className="g2">
-            <div className="gi">
-              <img src="/images/axon.png" alt="Axonometric drawing" />
-              <div className="gilbl">Exploded axonometric</div>
-            </div>
-            <div className="gi">
-              <img src="/images/site-isometric.png" alt="Site isometric" />
-              <div className="gilbl">Isometric — urban context</div>
-            </div>
+          {/* Full-width drawing */}
+          <div className="gh">
+            <img src="/images/axon.png" alt="Axonometric drawing" />
+            <div className="glbl">Exploded axonometric</div>
           </div>
 
           {/* Full-width closing image — physical model */}

@@ -521,7 +521,7 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
 .tw-skyline-bg{
   position:absolute;bottom:0;left:0;right:0;
   width:110%;height:400px;margin-left:-5%;
-  z-index:0;opacity:0.35;
+  z-index:0;opacity:0.55;
   pointer-events:none;overflow:hidden;
 }
 .tw-skyline-bg svg{
