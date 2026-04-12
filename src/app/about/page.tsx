@@ -33,37 +33,46 @@ export default function AboutPage() {
               </linearGradient>
             </defs>
             {/* Base layer — always-visible solid skyline edges */}
-            <g stroke="rgba(180,200,230,0.6)" strokeWidth="1.2" fill="none">
-              {/* Mountain backdrop */}
-              <path d="M0 230 Q60 185 120 200 Q180 160 260 180 Q340 140 420 170 Q480 145 540 155 Q600 130 660 142 Q740 120 800 140 Q860 125 920 150 Q980 130 1050 160 Q1100 145 1150 170 Q1180 160 1200 180" />
+            <g stroke="rgba(180,200,230,0.5)" strokeWidth="1" fill="none">
+              {/* Ground / baseline */}
               <line x1="0" y1="310" x2="1200" y2="310" />
+            </g>
+            {/* Taipei 101 — brighter and bolder */}
+            <g stroke="rgba(200,220,255,0.8)" strokeWidth="1.5" fill="none">
               <rect x="575" y="58" width="30" height="252" />
-              <line x1="590" y1="58" x2="590" y2="22" />
-              <line x1="586" y1="42" x2="594" y2="42" />
-              <line x1="584" y1="50" x2="596" y2="50" />
-              <path d="M568 100 L575 100 L575 130 L568 130" />
-              <path d="M605 100 L612 100 L612 130 L605 130" />
-              <path d="M569 132 L575 132 L575 160 L569 160" />
-              <path d="M605 132 L611 132 L611 160 L605 160" />
-              <path d="M570 162 L575 162 L575 188 L570 188" />
-              <path d="M605 162 L610 162 L610 188 L605 188" />
-              <path d="M571 190 L575 190 L575 214 L571 214" />
-              <path d="M605 190 L609 190 L609 214 L605 214" />
-              <path d="M572 216 L575 216 L575 238 L572 238" />
-              <path d="M605 216 L608 216 L608 238 L605 238" />
-              <line x1="566" y1="100" x2="614" y2="100" />
-              <line x1="567" y1="130" x2="613" y2="130" />
-              <line x1="568" y1="160" x2="612" y2="160" />
-              <line x1="569" y1="188" x2="611" y2="188" />
-              <line x1="570" y1="214" x2="610" y2="214" />
-              <line x1="571" y1="238" x2="609" y2="238" />
-              <rect x="562" y="240" width="56" height="70" />
-              <line x1="562" y1="260" x2="618" y2="260" />
-              <line x1="562" y1="280" x2="618" y2="280" />
+              {/* Spire */}
+              <line x1="590" y1="58" x2="590" y2="18" />
+              <line x1="586" y1="38" x2="594" y2="38" />
+              <line x1="584" y1="46" x2="596" y2="46" />
+              {/* 8 tapered bamboo segments */}
+              <path d="M566 100 L575 100 L575 130 L566 130" />
+              <path d="M605 100 L614 100 L614 130 L605 130" />
+              <path d="M567 132 L575 132 L575 160 L567 160" />
+              <path d="M605 132 L613 132 L613 160 L605 160" />
+              <path d="M568 162 L575 162 L575 188 L568 188" />
+              <path d="M605 162 L612 162 L612 188 L605 188" />
+              <path d="M569 190 L575 190 L575 214 L569 214" />
+              <path d="M605 190 L611 190 L611 214 L605 214" />
+              <path d="M570 216 L575 216 L575 238 L570 238" />
+              <path d="M605 216 L610 216 L610 238 L605 238" />
+              {/* Section divider lines */}
+              <line x1="564" y1="100" x2="616" y2="100" />
+              <line x1="565" y1="130" x2="615" y2="130" />
+              <line x1="566" y1="160" x2="614" y2="160" />
+              <line x1="567" y1="188" x2="613" y2="188" />
+              <line x1="568" y1="214" x2="612" y2="214" />
+              <line x1="569" y1="238" x2="611" y2="238" />
+              {/* Base podium */}
+              <rect x="560" y="240" width="60" height="70" />
+              <line x1="560" y1="260" x2="620" y2="260" />
+              <line x1="560" y1="280" x2="620" y2="280" />
               <line x1="572" y1="240" x2="572" y2="310" />
               <line x1="582" y1="240" x2="582" y2="310" />
               <line x1="598" y1="240" x2="598" y2="310" />
               <line x1="608" y1="240" x2="608" y2="310" />
+            </g>
+            {/* Surrounding buildings — dimmer */}
+            <g stroke="rgba(180,200,230,0.5)" strokeWidth="1" fill="none">
               <rect x="490" y="155" width="28" height="155" />
               <line x1="490" y1="180" x2="518" y2="180" />
               <line x1="490" y1="210" x2="518" y2="210" />
@@ -174,8 +183,7 @@ export default function AboutPage() {
             </g>
             {/* Bright sweep layer — tron glow animates over the base */}
             <g stroke="url(#tron-sweep)" strokeWidth="1" fill="none">
-              {/* Mountain backdrop */}
-              <path d="M0 230 Q60 185 120 200 Q180 160 260 180 Q340 140 420 170 Q480 145 540 155 Q600 130 660 142 Q740 120 800 140 Q860 125 920 150 Q980 130 1050 160 Q1100 145 1150 170 Q1180 160 1200 180" />
+              {/* Ground / baseline */}
               {/* Ground / baseline */}
               <line x1="0" y1="310" x2="1200" y2="310" />
               {/* TAIPEI 101 */}
