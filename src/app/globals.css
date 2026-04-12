@@ -522,7 +522,7 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
 .tw-skyline-bg{
   position:absolute;bottom:0;left:0;right:0;
   width:110%;height:340px;margin-left:-5%;
-  z-index:0;opacity:0.3;
+  z-index:0;opacity:0.6;
   pointer-events:none;overflow:hidden;
 }
 .tw-skyline-bg svg{
@@ -560,12 +560,12 @@ footer{padding:22px 0;border-top:0.5px solid var(--ln);display:flex;justify-cont
   max-height:420px;
   filter:drop-shadow(0 0 12px rgba(200,220,255,0.15));
   animation:tower-spin 12s linear infinite;
-  transform-style:preserve-3d;
 }
 @keyframes tower-spin{
-  0%{transform:rotateY(0deg)}
-  100%{transform:rotateY(360deg)}
+  0%{transform:perspective(800px) rotateY(0deg)}
+  100%{transform:perspective(800px) rotateY(360deg)}
 }
+.taipei101-svg *{backface-visibility:visible}
 .about-trio-info{
   flex:1;
   min-width:0;

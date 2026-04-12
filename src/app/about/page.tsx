@@ -18,7 +18,7 @@ export default function AboutPage() {
                 <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0" dur="8s" repeatCount="indefinite" />
               </linearGradient>
             </defs>
-            <g stroke="rgba(180,200,230,0.2)" strokeWidth="0.7" fill="none">
+            <g stroke="rgba(180,200,230,0.45)" strokeWidth="0.8" fill="none">
               <line x1="0" y1="310" x2="1200" y2="310" />
               <rect x="490" y="155" width="28" height="155" />
               <line x1="504" y1="155" x2="504" y2="310" />
