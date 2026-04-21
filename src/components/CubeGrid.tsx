@@ -181,10 +181,10 @@ export default function CubeGrid() {
     scene.addEventListener('pointerleave', resetAll);
     scene.addEventListener('click', (e: MouseEvent) => ripple(e.clientX, e.clientY));
 
+    // passive: true so native scroll is never blocked on mobile
     scene.addEventListener(
       'touchmove',
       (e: TouchEvent) => {
-        e.preventDefault();
         userActive = true;
         if (idleTimer) clearTimeout(idleTimer);
         const rect = scene.getBoundingClientRect();
@@ -199,7 +199,7 @@ export default function CubeGrid() {
           userActive = false;
         }, 3000);
       },
-      { passive: false }
+      { passive: true }
     );
 
     scene.addEventListener('touchstart', () => {
@@ -212,15 +212,20 @@ export default function CubeGrid() {
     const autoCenter = Math.floor(GRID / 2);
     const autoRow = autoCenter;
     const autoObj = { col: 2 };
+    // On mobile, throttle onUpdate to ~30fps to keep things butter-smooth
+    let lastAutoTime = 0;
+    const autoThrottle = isMobile ? 33 : 0; // ms between tiltAt calls
     const autoTl = gsap.timeline({ repeat: -1, yoyo: true, paused: false });
     autoTl.to(autoObj, {
       col: GRID - 2,
       duration: isMobile ? 4 : 3,
       ease: 'sine.inOut',
       onUpdate: () => {
-        if (!userActive) {
-          tiltAt(autoRow, autoObj.col);
-        }
+        if (userActive) return;
+        const now = performance.now();
+        if (now - lastAutoTime < autoThrottle) return;
+        lastAutoTime = now;
+        tiltAt(autoRow, autoObj.col);
       },
     });
 
