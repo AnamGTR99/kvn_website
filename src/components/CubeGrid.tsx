@@ -23,8 +23,10 @@ export default function CubeGrid() {
 
     const gsap = (window as any).gsap;
 
-    const GRID = 10;
-    const RADIUS = 3;
+    // Reduce grid on mobile for performance (6x6=36 cubes vs 10x10=100)
+    const isMobile = window.innerWidth <= 768;
+    const GRID = isMobile ? 6 : 10;
+    const RADIUS = isMobile ? 2 : 3;
     const MAX_ANGLE = 20;
     const FACE_COLOR = '#0a0b0d';
     const RIPPLE_COL = 'rgba(180,200,230,0.40)';
@@ -32,20 +34,23 @@ export default function CubeGrid() {
     const ENTER_DUR = 0.3;
     const LEAVE_DUR = 0.6;
     const EASING = 'power3.out';
+    // On mobile, only render 3 visible faces instead of 6
+    const FACES = isMobile ? ['top', 'front', 'right'] : ['top', 'bottom', 'left', 'right', 'front', 'back'];
 
     const scene = document.getElementById('cubesScene');
     if (!scene) return;
 
     scene.style.gridTemplateColumns = `repeat(${GRID}, 1fr)`;
 
-    // Build the grid — 10x10 = 100 cubes, each with 6 faces
+    // Build the grid — mobile: 6x6=36 cubes × 3 faces = 108 elements
+    //                   desktop: 10x10=100 cubes × 6 faces = 600 elements
     for (let r = 0; r < GRID; r++) {
       for (let c = 0; c < GRID; c++) {
         const cube = document.createElement('div');
         cube.className = 'cb';
         (cube.dataset as any).row = r;
         (cube.dataset as any).col = c;
-        ['top', 'bottom', 'left', 'right', 'front', 'back'].forEach(f => {
+        FACES.forEach(f => {
           const face = document.createElement('div');
           face.className = 'cb-face ' + f;
           cube.appendChild(face);
@@ -54,47 +59,55 @@ export default function CubeGrid() {
       }
     }
 
+    // Cache cube elements once — avoid repeated DOM queries in hot paths
+    const cubes: { el: HTMLElement; row: number; col: number }[] = [];
+    const allCubeEls = scene.querySelectorAll('.cb');
+    allCubeEls.forEach((cube: any) => {
+      cubes.push({ el: cube, row: +cube.dataset.row, col: +cube.dataset.col });
+    });
+
     // After layout: set 3D transform-origin so cube rotates around its true center
     const half = (Math.min(scene.offsetWidth, scene.offsetHeight) / GRID) / 2;
     setTimeout(() => {
-      scene.querySelectorAll('.cb').forEach(function(cube: any) {
-        cube.style.transformOrigin = `50% 50% ${half}px`;
+      cubes.forEach(({ el }) => {
+        el.style.transformOrigin = `50% 50% ${half}px`;
       });
     }, 50);
 
+    const RADIUS_SQ = RADIUS * RADIUS;
+
     // tiltAt: rotate cubes within radius toward a point
     const tiltAt = (row: number, col: number) => {
-      scene.querySelectorAll('.cb').forEach((cube: any) => {
-        const r = +cube.dataset.row;
-        const c = +cube.dataset.col;
-        const distSq = Math.pow(r - row, 2) + Math.pow(c - col, 2);
-        if (distSq < RADIUS * RADIUS) {
+      for (let i = 0; i < cubes.length; i++) {
+        const { el, row: r, col: c } = cubes[i];
+        const distSq = (r - row) * (r - row) + (c - col) * (c - col);
+        if (distSq < RADIUS_SQ) {
           const dist = Math.sqrt(distSq);
           const pct = 1 - dist / RADIUS;
           const angle = pct * MAX_ANGLE;
           const dx = c - col;
           const dy = r - row;
-          gsap.to(cube, {
+          gsap.to(el, {
             duration: ENTER_DUR,
             rotateX: (dy / dist) * angle,
             rotateY: (dx / dist) * angle,
             ease: EASING,
           });
         } else {
-          gsap.to(cube, {
+          gsap.to(el, {
             duration: LEAVE_DUR,
             rotateX: 0,
             rotateY: 0,
             ease: 'power3.out',
           });
         }
-      });
+      }
     };
 
     const resetAll = () => {
-      scene.querySelectorAll('.cb').forEach((cube: any) =>
-        gsap.to(cube, { duration: LEAVE_DUR, rotateX: 0, rotateY: 0, ease: 'power3.out' })
-      );
+      for (let i = 0; i < cubes.length; i++) {
+        gsap.to(cubes[i].el, { duration: LEAVE_DUR, rotateX: 0, rotateY: 0, ease: 'power3.out' });
+      }
     };
 
     // ripple: tron sweep animation
@@ -110,14 +123,13 @@ export default function CubeGrid() {
       const spreadDelay = 0.08;
 
       const rings: { [key: number]: any[] } = {};
-      scene.querySelectorAll('.cb').forEach((cube: any) => {
-        const r = +cube.dataset.row;
-        const c = +cube.dataset.col;
+      for (let i = 0; i < cubes.length; i++) {
+        const { el, row: r, col: c } = cubes[i];
         const dist = Math.hypot(r - row, c - col);
         const ring = Math.round(dist);
         if (!rings[ring]) rings[ring] = [];
-        rings[ring].push(cube);
-      });
+        rings[ring].push(el);
+      }
 
       Object.keys(rings)
         .map(Number)
@@ -192,36 +204,41 @@ export default function CubeGrid() {
 
     scene.addEventListener('touchend', () => resetAll(), { passive: true });
 
-    // Auto-animate (idle simulation)
-    let autoCol = 5,
-      autoRow = 5,
+    // Auto-animate (idle simulation) — slower tick on mobile to reduce work
+    const autoCenter = Math.floor(GRID / 2);
+    let autoCol = autoCenter,
+      autoRow = autoCenter,
       autoDir = 1;
+    const autoInterval = isMobile ? 160 : 80;
     setInterval(() => {
       if (!userActive) {
         autoCol += 0.3 * autoDir;
-        if (autoCol > 8 || autoCol < 2) autoDir *= -1;
+        if (autoCol > GRID - 2 || autoCol < 2) autoDir *= -1;
         tiltAt(autoRow, autoCol);
       }
-    }, 80);
+    }, autoInterval);
 
     // ── Tron sweep — moving light beam across cube edges ──
     const SWEEP_DUR = 4;
-    const SWEEP_WIDTH = 2.5;
+    const SWEEP_WIDTH = isMobile ? 2 : 2.5;
 
     const colFaces: { [key: number]: HTMLElement[] } = {};
     for (let c = 0; c < GRID; c++) colFaces[c] = [];
-    scene.querySelectorAll('.cb').forEach((cube: any) => {
-      const c = +cube.dataset.col;
-      cube.querySelectorAll('.cb-face').forEach((f: HTMLElement) => colFaces[c].push(f));
-    });
+    for (let i = 0; i < cubes.length; i++) {
+      const { el, col: c } = cubes[i];
+      el.querySelectorAll('.cb-face').forEach((f: any) => colFaces[c].push(f));
+    }
 
     const sweepObj = { pos: -SWEEP_WIDTH };
+    // On mobile, skip every other frame to cut sweep work in half
+    let sweepFrame = 0;
     gsap.to(sweepObj, {
       pos: GRID + SWEEP_WIDTH,
       duration: SWEEP_DUR,
       ease: 'none',
       repeat: -1,
       onUpdate: function () {
+        if (isMobile && ++sweepFrame % 2 !== 0) return;
         const center = sweepObj.pos;
         for (let c = 0; c < GRID; c++) {
           const dist = Math.abs(c - center);
@@ -230,10 +247,12 @@ export default function CubeGrid() {
             const alpha = (0.32 + pct * 0.38).toFixed(2);
             const glowAlpha = (0.22 + pct * 0.28).toFixed(2);
             const bdr = 'rgba(200,220,255,' + alpha + ')';
-            const shd =
-              '0 0 ' + (5 + pct * 4) + 'px rgba(200,220,255,' + glowAlpha + '), 0 0 ' +
-              (12 + pct * 8) + 'px rgba(160,190,255,' + (0.10 + pct * 0.15).toFixed(2) +
-              '), inset 0 0 5px rgba(200,220,255,' + (0.06 + pct * 0.06).toFixed(2) + ')';
+            // Simplified shadow on mobile (single layer instead of triple)
+            const shd = isMobile
+              ? '0 0 ' + (5 + pct * 4) + 'px rgba(200,220,255,' + glowAlpha + ')'
+              : '0 0 ' + (5 + pct * 4) + 'px rgba(200,220,255,' + glowAlpha + '), 0 0 ' +
+                (12 + pct * 8) + 'px rgba(160,190,255,' + (0.10 + pct * 0.15).toFixed(2) +
+                '), inset 0 0 5px rgba(200,220,255,' + (0.06 + pct * 0.06).toFixed(2) + ')';
             colFaces[c].forEach((f) => {
               f.style.borderColor = bdr;
               f.style.boxShadow = shd;
