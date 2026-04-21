@@ -26,14 +26,14 @@ export default function CubeGrid() {
     // Reduce grid on mobile for performance (6x6=36 cubes vs 10x10=100)
     const isMobile = window.innerWidth <= 768;
     const GRID = isMobile ? 6 : 10;
-    const RADIUS = isMobile ? 2 : 3;
-    const MAX_ANGLE = 20;
+    const RADIUS = isMobile ? 2.5 : 3;
+    const MAX_ANGLE = isMobile ? 14 : 20;
     const FACE_COLOR = '#0a0b0d';
     const RIPPLE_COL = 'rgba(180,200,230,0.40)';
     const RIPPLE_SPD = 2;
-    const ENTER_DUR = 0.3;
-    const LEAVE_DUR = 0.6;
-    const EASING = 'power3.out';
+    const ENTER_DUR = isMobile ? 0.5 : 0.3;
+    const LEAVE_DUR = isMobile ? 1.2 : 0.6;
+    const EASING = isMobile ? 'power2.out' : 'power3.out';
     // On mobile, only render 3 visible faces instead of 6
     const FACES = isMobile ? ['top', 'front', 'right'] : ['top', 'bottom', 'left', 'right', 'front', 'back'];
 
@@ -67,10 +67,12 @@ export default function CubeGrid() {
     });
 
     // After layout: set 3D transform-origin so cube rotates around its true center
+    // Also promote each cube to its own GPU layer for smooth compositing
     const half = (Math.min(scene.offsetWidth, scene.offsetHeight) / GRID) / 2;
     setTimeout(() => {
       cubes.forEach(({ el }) => {
         el.style.transformOrigin = `50% 50% ${half}px`;
+        el.style.willChange = 'transform';
       });
     }, 50);
 
@@ -92,13 +94,15 @@ export default function CubeGrid() {
             rotateX: (dy / dist) * angle,
             rotateY: (dx / dist) * angle,
             ease: EASING,
+            overwrite: 'auto',
           });
         } else {
           gsap.to(el, {
             duration: LEAVE_DUR,
             rotateX: 0,
             rotateY: 0,
-            ease: 'power3.out',
+            ease: EASING,
+            overwrite: 'auto',
           });
         }
       }
@@ -106,7 +110,7 @@ export default function CubeGrid() {
 
     const resetAll = () => {
       for (let i = 0; i < cubes.length; i++) {
-        gsap.to(cubes[i].el, { duration: LEAVE_DUR, rotateX: 0, rotateY: 0, ease: 'power3.out' });
+        gsap.to(cubes[i].el, { duration: LEAVE_DUR, rotateX: 0, rotateY: 0, ease: EASING, overwrite: 'auto' });
       }
     };
 
@@ -204,19 +208,21 @@ export default function CubeGrid() {
 
     scene.addEventListener('touchend', () => resetAll(), { passive: true });
 
-    // Auto-animate (idle simulation) — slower tick on mobile to reduce work
+    // Auto-animate (idle simulation) — smooth continuous tween instead of setInterval
     const autoCenter = Math.floor(GRID / 2);
-    let autoCol = autoCenter,
-      autoRow = autoCenter,
-      autoDir = 1;
-    const autoInterval = isMobile ? 160 : 80;
-    setInterval(() => {
-      if (!userActive) {
-        autoCol += 0.3 * autoDir;
-        if (autoCol > GRID - 2 || autoCol < 2) autoDir *= -1;
-        tiltAt(autoRow, autoCol);
-      }
-    }, autoInterval);
+    const autoRow = autoCenter;
+    const autoObj = { col: 2 };
+    const autoTl = gsap.timeline({ repeat: -1, yoyo: true, paused: false });
+    autoTl.to(autoObj, {
+      col: GRID - 2,
+      duration: isMobile ? 4 : 3,
+      ease: 'sine.inOut',
+      onUpdate: () => {
+        if (!userActive) {
+          tiltAt(autoRow, autoObj.col);
+        }
+      },
+    });
 
     // ── Tron sweep — moving light beam across cube edges ──
     const SWEEP_DUR = 4;
