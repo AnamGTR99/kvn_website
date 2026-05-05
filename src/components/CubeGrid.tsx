@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 
 export default function CubeGrid() {
   useEffect(() => {
+    // Skip GSAP + cube init entirely on mobile — FloatingParticles handles that
+    if (window.innerWidth <= 768) return;
+
     // Load GSAP from CDN
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
