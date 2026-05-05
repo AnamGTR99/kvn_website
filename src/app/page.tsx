@@ -22,7 +22,7 @@ export default function Home() {
             <span>Melbourne, Australia</span>
             <span>@bykevinchiang</span>
           </div>
-          <a href="#contact" className="hero-cta-mobile">Let&apos;s Work</a>
+          <a href="/contact" className="hero-cta-mobile">Let&apos;s Work</a>
         </div>
 
         <div className="hero-scroll">
